@@ -2,16 +2,16 @@ import java.util.Scanner;
 import java.util.Random;
 import java.lang.Math;
 
-public class dp084e {
+public class tag {
 	static int kid1, kid2;
 	static Scanner entry = new Scanner(System.in);
 	static boolean game = true;	
 	static double dist;
-	static int grid = 50;
+	static int grid = 5;
 	
 	public static void main (String[] args) {
 		// Starting description
-		System.out.println("You and your child are playing hide and seek in the forest.\n");
+		System.out.println("You and your child are playing hide and seek tag in the forest.\n");
 		
 		while (game) {
 			initialize();
@@ -70,20 +70,51 @@ public class dp084e {
 				kid2--;
 				System.out.println("You head one meter west.\n");
 				break;
+			case 'l':
+			case 'L':
+				System.out.printf("You are surrounded by a combination of deciduous and coniferous trees. You can't see very far through the greenery. Your child is not visible from where you are standing.\n\nYour parental sense says you are %1.3f meters from your child.\n\nTry \"north\", \"south\", \"east\", or \"west\".\n",dist);
 			default:
 				System.out.println("You can't figure out how to go that way.\n\nTry \"north\", \"south\", \"east\", or \"west\".\n");
 		}
 		
 		if (!(kid1 == 0 && kid2 == 0)) {
+			kidmove();
+		
 			dist = Math.sqrt(kid1*kid1 + kid2*kid2);
 		
 			System.out.printf("Your parental sense says you are %1.3f meters from your child.\n",dist);
 		}
 	}
 	
+	private static void kidmove() {
+		Random rand = new Random();
+		
+		int move = rand.nextInt(2);
+		if (move == 1) {
+			do { 
+				int dir = rand.nextInt(4);
+				switch (dir) {
+					case 1:
+						kid1++;
+						break;
+					case 2:
+						kid1--;
+						break;
+					case 3:
+						kid2++;
+						break;
+					case 4:
+						kid2--;
+						break;
+				}
+			}
+			while  (kid1+kid2 == 0);
+		}
+	}
+	
 	private static boolean win() {
 		// Find response
-		System.out.println("As you move into this section of the forest, you see your child!  You give them a quick hug.\n\nWould you like to play hide and seek again (yes or no)?\n");
+		System.out.println("As you move into this section of the forest, you see your child!  You gently tag them and then give them a quick hug.\n\nWould you like to play hide and seek tag again (yes or no)?\n");
 		System.out.print("> ");
 		String input = entry.nextLine();
 		char again = input.charAt(0);
