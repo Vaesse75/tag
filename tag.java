@@ -72,7 +72,7 @@ public class tag {
 				break;
 			case 'l':
 			case 'L':
-				System.out.printf("You are surrounded by a combination of deciduous and coniferous trees. You can't see very far through the greenery. Your child is not visible from where you are standing.\n\nYour parental sense says you are %1.3f meters from your child.\n\nTry \"north\", \"south\", \"east\", or \"west\".\n",dist);
+				System.out.printf("You are surrounded by a combination of deciduous and coniferous trees. You can't see very far through the greenery. Your child is not visible from where you are standing.\n",dist);
 			default:
 				System.out.println("You can't figure out how to go that way.\n\nTry \"north\", \"south\", \"east\", or \"west\".\n");
 		}
